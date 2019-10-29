@@ -32,7 +32,7 @@ class bottleneck(nn.Module):
             self.pooling = nn.AdaptiveAvgPool2d(1)
             self.fc1 = nn.Linear(expand_channel, expand_channel//4)
             self.fc2 = nn.Linear(expand_channel//4, expand_channel)
-            self.hsigmoid = nn.hardtanh(0, 1)
+            self.hsigmoid = nn.Hardtanh(0, 1)
 
     def forward(self, x):
         shortcut = self.bn(self.shortcut(x))
@@ -79,7 +79,7 @@ class MobileNetV3Small(nn.Module):
         self.pooling_se = nn.AdaptiveAvgPool2d(1)
         self.fc1_se = nn.Linear(576, 576//4)
         self.fc2_se = nn.Linear(576//4, 576)
-        self.hsigmoid_se = nn.hardtanh(0, 1)
+        self.hsigmoid_se = nn.Hardtanh(0, 1)
 
         self.pooling = nn.AvgPool2d(7)
 
